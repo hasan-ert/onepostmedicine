@@ -1,0 +1,18 @@
+.unfinished-course-row {
+  justify-content: center;
+  text-align: center;
+  border-radius: 15px;
+}
+.unfinished-course-row:hover {
+  background-color: rgb(240, 191, 245);
+}
+
+.unfinished-course-container {
+  background-color: rgb(246, 222, 248);
+  border-style: solid;
+  border-radius: 15px;
+  border-color: rgb(100, 41, 97);
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+}

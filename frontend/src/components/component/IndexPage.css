@@ -1,0 +1,12 @@
+#header-row {
+  margin: 50px !important;
+  height: 600px;
+}
+
+#sign-up-btn {
+  justify-self: center;
+  width: 300%;
+  height: 150%;
+  color: rgb(240, 206, 230);
+  background-color: rgb(133, 60, 111);
+}
