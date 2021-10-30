@@ -1,26 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Container, Grid } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import "../component/MainComponents/site.css";
 import "./css/UnfinishedCourses.css";
+
+function CreateRows(courseList) {
+  return courseList.map(function (course) {
+    return (
+      <Grid
+        xs={12}
+        className="unfinished-course-row"
+        onClick={() => alert(course.courseName)}
+      >
+        <h1>{course.courseName}</h1>
+      </Grid>
+    );
+  });
+}
+
 function UnfinishedCourses() {
-  let unfinished = [{ courseName: "deneme1" }, { courseName: "deneme2" }];
+  let unfinished = [
+    { courseName: "Course 1" },
+    { courseName: "Course 2" },
+    { courseName: "Course 3" },
+    { courseName: "Course 4" },
+    { courseName: "Course 5" },
+  ];
   return (
-    <Grid container margin="20px" className="unfinished-course-container">
-      <Grid
-        xs={12}
-        className="unfinished-course-row"
-        onClick={() => alert(unfinished[0].courseName)}
-      >
-        <h1>{unfinished[0].courseName}</h1>
-      </Grid>
-      <Grid
-        xs={12}
-        className="unfinished-course-row"
-        onClick={() => alert(unfinished[1].courseName)}
-      >
-        <h1>{unfinished[1].courseName}</h1>
-      </Grid>
+    <Grid
+      item
+      xs={12}
+      marginTop="30px"
+      height="500px"
+      className="unfinished-course-container"
+    >
+      {CreateRows(unfinished)}
     </Grid>
   );
 }

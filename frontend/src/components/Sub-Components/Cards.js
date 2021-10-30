@@ -7,27 +7,42 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "../component/MainComponents/site.css";
 import "./css/Cards.css";
-export default function MediaCard() {
+
+export default function MediaCard({
+  imgSource,
+  contentHeader,
+  content,
+  contentVar,
+  contentHeaderVar,
+}) {
+  function createCardMedia() {
+    if (imgSource !== undefined)
+      return <img src={imgSource} alt={contentHeader} />;
+    else return;
+  }
+
+  function createCardHeader() {
+    return (
+      <Typography gutterBottom variant={contentHeaderVar} component="div">
+        {contentHeader}
+      </Typography>
+    );
+  }
+  function createCardContent() {
+    return (
+      <Typography gutterBottom variant={contentVar} component="div">
+        {content}
+      </Typography>
+    );
+  }
+
   return (
     <Card className="Cards">
-      <CardMedia
-        component="img"
-        image="https://www.themedicportal.com/wp-content/uploads/2015/10/Being-a-medical-school-student-2.jpg"
-        alt="green iguana"
-      />
+      {createCardMedia()}
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        {createCardHeader()}
+        {createCardContent()}
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }

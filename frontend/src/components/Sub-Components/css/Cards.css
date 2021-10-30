@@ -1,3 +1,4 @@
 .Cards {
   margin: 20px;
+  object-fit: cover;
 }

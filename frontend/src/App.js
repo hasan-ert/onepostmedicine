@@ -8,17 +8,36 @@ import Home from "./components/dynamic/Home.js";
 
 import ScrollToTop from "./helpers/ScrollToTop.js";
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+  const [credentials, setCredentials] = useState({
+    user: "hasan0877",
+    password: "abcdefg",
+  });
+  useEffect(() => {
+    checkCredentials(setIsAuth);
+  }, []);
+  useEffect(() => {
+    console.log(isAuth);
+  }, [isAuth]);
+
+  function checkCredentials(credentials, authHandler) {
+    if (credentials.user === "hasan0877" && credentials.password === "abcdefg")
+      authHandler(true);
+  }
+
+  function Authorization() {
+    if (!isAuth) return <IndexPage />;
+    else return <Home />;
+  }
   return (
     <div className="App">
       <ScrollToTop />
-      <Navbar />
+      <Navbar authHandler={setIsAuth} />
       <Switch>
-        <Route path="/" exact>
-          <IndexPage />
+        <Route path="/home" exact>
+          {Authorization()}
         </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
+        {/* <Route path="/login"></Route> */}
       </Switch>
     </div>
   );
