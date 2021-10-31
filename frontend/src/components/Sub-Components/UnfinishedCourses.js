@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Grid, Typography } from "@mui/material";
-import "../component/MainComponents/site.css";
+import "../componentCss/site.css";
 import "./css/UnfinishedCourses.css";
 
 function CreateRows(courseList) {
