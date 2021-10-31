@@ -1,4 +1,6 @@
 .Cards {
   margin: 20px;
   object-fit: cover;
+  background-color: rgb(255, 212, 148);
+  height: 100%;
 }

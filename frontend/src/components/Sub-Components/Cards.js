@@ -5,15 +5,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import "../component/MainComponents/site.css";
+import "../componentCss/site.css";
 import "./css/Cards.css";
 
 export default function MediaCard({
+  backColor,
   imgSource,
   contentHeader,
   content,
-  contentVar,
-  contentHeaderVar,
+  contentVar = "body2",
+  contentHeaderVar = "h3",
 }) {
   function createCardMedia() {
     if (imgSource !== undefined)
@@ -23,7 +24,12 @@ export default function MediaCard({
 
   function createCardHeader() {
     return (
-      <Typography gutterBottom variant={contentHeaderVar} component="div">
+      <Typography
+        gutterBottom
+        variant={contentHeaderVar}
+        textAlign="center"
+        component="div"
+      >
         {contentHeader}
       </Typography>
     );
@@ -37,7 +43,7 @@ export default function MediaCard({
   }
 
   return (
-    <Card className="Cards">
+    <Card className="Cards" style={{ backgroundColor: backColor }}>
       {createCardMedia()}
       <CardContent>
         {createCardHeader()}

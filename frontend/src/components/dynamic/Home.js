@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Grid, Typography } from "@mui/material";
 
-import "../component/MainComponents/site.css";
-import "../component/Home.css";
+import "../componentCss/site.css";
+import "../componentCss/MainComponents/Home.css";
 import MediaCard from "../Sub-Components/Cards";
 import UnfinishedCourses from "../Sub-Components/UnfinishedCourses";
 import { typography } from "@mui/system";
@@ -54,10 +54,10 @@ function HomePanel() {
   const data = {
     University: "Sabanci University",
     Grade: 4,
-    "Started Courses": 8,
+    "Started Courses": 10,
     "Overall Score": 3.67,
   };
-  const started_courses = 8;
+  const started_courses = 10;
   const finished_courses = 6;
   return (
     <Grid>
@@ -100,7 +100,7 @@ function HomePanel() {
         textAlign="center"
       >
         <Typography>
-          <h2>Achievement in Courses</h2>
+          <h2>Progression in Courses</h2>
         </Typography>
         <Grid
           item

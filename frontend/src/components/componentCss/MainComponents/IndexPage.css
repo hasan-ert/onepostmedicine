@@ -3,10 +3,14 @@
   height: 600px;
 }
 
+#header-photo {
+  height: 100%;
+}
+
 #sign-up-btn {
   justify-self: center;
   width: 300%;
   height: 150%;
-  color: rgb(240, 206, 230);
+  color: rgb(255, 255, 255);
   background-color: rgb(133, 60, 111);
 }
