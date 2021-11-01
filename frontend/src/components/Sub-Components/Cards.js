@@ -53,7 +53,9 @@ export default function MediaCard({
     <Card
       className={"Cards"}
       id={cssClass}
-      onClick={() => onClickHandler(contentHeader)}
+      onClick={() => {
+        if (onClickHandler !== undefined) onClickHandler(contentHeader);
+      }}
       style={{ backgroundColor: backColor }}
     >
       {createCardMedia()}
