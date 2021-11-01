@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 import Navbar from "./components/dynamic/Navbar.js";
 import IndexPage from "./components/dynamic/IndexPage.js";
 import Home from "./components/dynamic/Home.js";
-
+import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -36,6 +36,10 @@ function App() {
       <Switch>
         <Route path="/home" exact>
           {Authorization()}
+        </Route>
+        <Route path="/courses">
+          {" "}
+          <Courses />{" "}
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
