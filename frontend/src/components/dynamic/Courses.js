@@ -3,14 +3,15 @@ import { useHistory } from "react-router-dom";
 import { AppBar, Box, Toolbar, Typography, Button, Grid } from "@mui/material";
 import MediaCard from "../Sub-Components/Cards";
 import "../componentCss/MainComponents/Courses.css";
+import createURL from "../../helpers/helpers";
 
 function createCardRows(data, history) {
   const changeURL = (courseName) => {
-    history.push("/courses/" + courseName.toLowerCase().replaceAll(" ", "-"));
+    history.push(createURL("/lecture", courseName));
   };
   return data.map(function (item) {
     return (
-      <Grid item xs={12} lg={4}>
+      <Grid item xs={12} lg={4} display="flex">
         <MediaCard
           onClickHandler={changeURL}
           cssClass="floating-card"
