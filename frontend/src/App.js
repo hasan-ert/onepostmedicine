@@ -8,7 +8,9 @@ import Home from "./components/dynamic/Home.js";
 import SignUp from "./components/dynamic/SignUp.js";
 import SignInSide from "./components/dynamic/SignIn.js";
 
+import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
+
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [credentials, setCredentials] = useState({
@@ -42,8 +44,12 @@ function App() {
         <Route path="/signup" >
           <SignUp/>
         </Route>
-        <Route path="/signın" >
+        <Route path="/signin" >
           <SignInSide/>
+        </Route>
+        <Route path="/courses">
+          {" "}
+          <Courses />{" "}
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
