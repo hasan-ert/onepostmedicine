@@ -10,11 +10,8 @@ import SignInSide from "./components/dynamic/SignIn.js";
 
 import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
-<<<<<<< HEAD
 import Lecture from "./components/dynamic/Lecture.js";
-=======
 
->>>>>>> 390c8826cc54073019769a450c9613380e7c8b16
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [credentials, setCredentials] = useState({
@@ -53,21 +50,21 @@ function App() {
             <Lecture />
           </Route>
           {/* <Route path="/login"></Route> */}
-        <Route path="/home" exact>
-          {Authorization()}
-        </Route>
-        <Route path="/signup" >
-          <SignUp/>
-        </Route>
-        <Route path="/signin" >
-          <SignInSide/>
-        </Route>
-        <Route path="/courses">
-          {" "}
-          <Courses />{" "}
-        </Route>
-        {/* <Route path="/login"></Route> */}
-      </Switch>
+          <Route path="/home" exact>
+            {Authorization()}
+          </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/signin">
+            <SignInSide />
+          </Route>
+          <Route path="/courses">
+            {" "}
+            <Courses />{" "}
+          </Route>
+          {/* <Route path="/login"></Route> */}
+        </Switch>
       </Container>
     </div>
   );
