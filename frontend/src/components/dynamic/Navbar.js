@@ -17,20 +17,18 @@ export default function Navbar({ authHandler }) {
             One Post Medicine
           </Typography>
           <Button
+            component={Link}
+            to={"/signin"}
             color="inherit"
-            onClick={() => {
-              
-            }}
+            onClick={() => {}}
           >
             Login
           </Button>
           <Button
-          component={Link}
-          to="/signup"
+            component={Link}
+            to="/signup"
             color="inherit"
-            onClick={() => {
-              
-            }}
+            onClick={() => {}}
           >
             Sign Up
           </Button>
