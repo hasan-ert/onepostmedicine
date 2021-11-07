@@ -9,7 +9,9 @@ import "../componentCss/site.css";
 import "./css/Cards.css";
 
 export default function MediaCard({
+  onClickHandler,
   backColor,
+  cssClass,
   imgSource,
   contentHeader,
   content,
@@ -36,14 +38,26 @@ export default function MediaCard({
   }
   function createCardContent() {
     return (
-      <Typography gutterBottom variant={contentVar} component="div">
+      <Typography
+        gutterBottom
+        textAlign="center"
+        variant={contentVar}
+        component="div"
+      >
         {content}
       </Typography>
     );
   }
 
   return (
-    <Card className="Cards" style={{ backgroundColor: backColor }}>
+    <Card
+      className={"Cards"}
+      id={cssClass}
+      onClick={() => {
+        if (onClickHandler !== undefined) onClickHandler(contentHeader);
+      }}
+      style={{ backgroundColor: backColor }}
+    >
       {createCardMedia()}
       <CardContent>
         {createCardHeader()}

@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../componentCss/MainComponents/Navbar.css";
+import { Link } from "react-router-dom";
 export default function Navbar({ authHandler }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -16,18 +17,18 @@ export default function Navbar({ authHandler }) {
             One Post Medicine
           </Typography>
           <Button
+            component={Link}
+            to={"/signin"}
             color="inherit"
-            onClick={() => {
-              authHandler(true);
-            }}
+            onClick={() => {}}
           >
             Login
           </Button>
           <Button
+            component={Link}
+            to="/signup"
             color="inherit"
-            onClick={() => {
-              authHandler(false);
-            }}
+            onClick={() => {}}
           >
             Sign Up
           </Button>
