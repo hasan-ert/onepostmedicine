@@ -1,28 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Grid, Typography } from "@mui/material";
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-
+// import Box from '@mui/material/Box';
+// import Drawer from '@mui/material/Drawer';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import AppBar from '@mui/material/AppBar';
+// import Toolbar from '@mui/material/Toolbar';
+// import List from '@mui/material/List';
+// import Divider from '@mui/material/Divider';
+// import ListItem from '@mui/material/ListItem';
+// import ListItemIcon from '@mui/material/ListItemIcon';
+// import ListItemText from '@mui/material/ListItemText';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import MailIcon from '@mui/icons-material/Mail';
 
 import "../componentCss/site.css";
 import "../componentCss/MainComponents/Home.css";
 import MediaCard from "../Sub-Components/Cards";
 import UnfinishedCourses from "../Sub-Components/UnfinishedCourses";
-import { typography } from "@mui/system";
-
-const drawerWidth = 240;
-
 
 function createDataRows(data) {
   const labels = Object.keys(data);
@@ -65,7 +60,6 @@ function createDataRows(data) {
     </Grid>
   );
 }
-
 
 function HomePanel() {
   const data = {
@@ -148,9 +142,7 @@ function Home() {
   return (
     <Container maxWidth="100%">
       <Grid container spacing={2} marginTop="10px">
-        <Grid item lg={2} xs={12} alignItems="center">
-          
-        </Grid>
+        <Grid item lg={2} xs={12} alignItems="center"></Grid>
         <Grid item lg={7} marginTop="20px" xs={12} alignItems="center">
           <h1>Welcome Hasan Ertugrul!</h1>
           <HomePanel />

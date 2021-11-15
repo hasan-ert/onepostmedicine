@@ -11,13 +11,11 @@ import SignInSide from "./components/dynamic/SignIn.js";
 import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
 import Lecture from "./components/dynamic/Lecture.js";
+import AddCourses from "./components/Admin/AddCourse.js";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [credentials, setCredentials] = useState({
-    user: "hasan0877",
-    password: "abcdefg",
-  });
+
   useEffect(() => {
     checkCredentials(setIsAuth);
   }, []);
@@ -63,6 +61,11 @@ function App() {
             {" "}
             <Courses />{" "}
           </Route>
+          <Route path="/addCourse">
+            {" "}
+            <AddCourses />{" "}
+          </Route>
+
           {/* <Route path="/login"></Route> */}
         </Switch>
       </Container>

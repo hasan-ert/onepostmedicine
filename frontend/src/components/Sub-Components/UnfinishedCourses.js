@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Button, Container, Grid, Typography } from "@mui/material";
+
+import { Grid } from "@mui/material";
 import "../componentCss/site.css";
 import "./css/UnfinishedCourses.css";
 
