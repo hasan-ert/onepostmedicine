@@ -27,10 +27,10 @@ export default function MediaCard({
   function createCardHeader() {
     return (
       <Typography
-        gutterBottom
-        variant={contentHeaderVar}
+        justifyContent="center"
         textAlign="center"
-        component="div"
+        style={{ wordBreak: "break-all" }}
+        fontSize={contentHeaderVar}
       >
         {contentHeader}
       </Typography>
@@ -40,8 +40,8 @@ export default function MediaCard({
     return (
       <Typography
         gutterBottom
+        fontSize={contentVar}
         textAlign="center"
-        variant={contentVar}
         component="div"
       >
         {content}
@@ -51,7 +51,8 @@ export default function MediaCard({
 
   return (
     <Card
-      className={"Cards"}
+      className={"Cards floating-card"}
+      margin="20px"
       id={cssClass}
       onClick={() => {
         if (onClickHandler !== undefined) onClickHandler(contentHeader);
@@ -59,10 +60,7 @@ export default function MediaCard({
       style={{ backgroundColor: backColor }}
     >
       {createCardMedia()}
-      <CardContent>
-        {createCardHeader()}
-        {createCardContent()}
-      </CardContent>
+      <CardContent>{createCardHeader()}</CardContent>
     </Card>
   );
 }
