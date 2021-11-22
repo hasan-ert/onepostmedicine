@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/hasan-ert/onepostmedicine/issues"
   },
-  "homepage": "https://github.com/hasan-ert/onepostmedicine#readme"
+  "homepage": "https://github.com/hasan-ert/onepostmedicine#readme",
+  "dependencies": {
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^11.6.0",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@mui/material": "^5.1.1"
+  }
 }

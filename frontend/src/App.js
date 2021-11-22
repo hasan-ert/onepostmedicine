@@ -7,7 +7,7 @@ import IndexPage from "./components/dynamic/IndexPage.js";
 import Home from "./components/dynamic/Home.js";
 import SignUp from "./components/dynamic/SignUp.js";
 import SignInSide from "./components/dynamic/SignIn.js";
-
+import Quizes from "./components/dynamic/Quiz"
 import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
 
@@ -50,6 +50,9 @@ function App() {
         <Route path="/courses">
           {" "}
           <Courses />{" "}
+        </Route>
+        <Route path="/quizes" >
+          <Quizes/>
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
