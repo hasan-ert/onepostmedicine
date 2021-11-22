@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Grid } from "@mui/material";
 import MediaCard from "../Sub-Components/Cards";
 import "../componentCss/MainComponents/Courses.css";
-import createURL from "../../helpers/helpers";
+import {createURL} from "../../helpers/helpers";
 
 function createCardRows(data, history) {
   const changeURL = (courseName) => {
