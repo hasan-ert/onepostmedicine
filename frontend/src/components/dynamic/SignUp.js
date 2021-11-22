@@ -13,6 +13,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import {collection, getDocs, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore';
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import {db} from '../../constants/firebase-config';
+import {auth} from '../../constants/firebase-config';
+import { useHistory } from 'react-router';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -28,17 +33,41 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+
+
 export default function SignUp() {
-  const handleSubmit = (event) => {
+
+  const history = useHistory()
+  const usersCollectionRef = collection(db, "users");
+
+  const createUser = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
+    try 
+    {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+         data.get('email'),
+         data.get('password')
+          );
+      console.log(user);
+      await addDoc (usersCollectionRef, {
+        name: data.get('firstName'), 
+        surname: data.get('lastName'),
+        grade: '4',
+        university: data.get('schoolname'),
+        email: data.get('email'),
+        password: data.get('password') 
+        });
+        history.push('/home')
+      
+    } catch (error) { console.log(error.message); }
+  
+  
+  
+    
+  
+  }
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -57,7 +86,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={(event) => createUser(event)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -111,12 +140,7 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+              
             </Grid>
             <Button
               type="submit"
@@ -128,7 +152,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signin" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
