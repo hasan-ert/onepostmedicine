@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 
-export default function PhotoUploader({ parentImageList, setParentImageList }) {
+export default function MediaUploader({ parentImageList, setParentImageList }) {
   const [widget, setWidget] = useState(
     window.cloudinary.createUploadWidget(
       {

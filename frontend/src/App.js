@@ -8,6 +8,7 @@ import Home from "./components/dynamic/Home.js";
 import SignUp from "./components/dynamic/SignUp.js";
 import SignInSide from "./components/dynamic/SignIn.js";
 
+import AddCourses from "./components/Admin/AddCourse.js";
 import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
 import Lecture from "./components/dynamic/Lecture.js";
@@ -37,7 +38,10 @@ function App() {
     console.log("authorized");
     return (
       <Switch>
-        <Route path="/home" exact>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/home">
           <Home />
         </Route>
         <Route path="/courses">
@@ -47,13 +51,17 @@ function App() {
           <Lecture />
         </Route>
         {/* <Route path="/login"></Route> */}
-        <Route path="/home" exact>
+        {/* <Route path="/home">
           {Authorization}
-        </Route>
+        </Route> */}
 
         <Route path="/courses">
           {" "}
           <Courses />{" "}
+        </Route>
+        <Route path="/addCourse">
+          {" "}
+          <AddCourses />{" "}
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
