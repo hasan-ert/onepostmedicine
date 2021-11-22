@@ -62,7 +62,7 @@ function Home() {
         >
           <Button
             component={Link}
-            to={"/home"}
+            to={"/signup"}
             variant="outlined"
             id="sign-up-btn"
           >
