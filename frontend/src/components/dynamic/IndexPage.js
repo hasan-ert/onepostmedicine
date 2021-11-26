@@ -5,7 +5,6 @@ import { Button, Container, Grid, Typography } from "@mui/material";
 import "../componentCss/MainComponents/IndexPage.css";
 import "../componentCss/site.css";
 import MediaCard from "../Sub-Components/Cards";
-import Navbar from "./Navbar";
 
 function Home() {
   return (

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
-import { AppBar, Box, Toolbar, Typography, Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import MediaCard from "../Sub-Components/Cards";
 import "../componentCss/MainComponents/Courses.css";
 import {createURL} from "../../helpers/helpers";

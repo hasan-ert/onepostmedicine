@@ -2,23 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Grid, Typography } from "@mui/material";
 
-import PermanentDrawerLeft from '../Sub-Components/SideBar'
+import PermanentDrawerLeft from "../Sub-Components/SideBar";
 
 import "../componentCss/site.css";
 import "../componentCss/MainComponents/Home.css";
 import MediaCard from "../Sub-Components/Cards";
 import UnfinishedCourses from "../Sub-Components/UnfinishedCourses";
-import { typography } from "@mui/system";
-
-const drawerWidth = 240;
-
 
 function createDataRows(data) {
   const labels = Object.keys(data);
 
-
-
-  
   return (
     <Grid
       item
@@ -57,7 +50,6 @@ function createDataRows(data) {
     </Grid>
   );
 }
-
 
 function HomePanel() {
   const data = {
