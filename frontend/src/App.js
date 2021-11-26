@@ -20,6 +20,8 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "./constants/firebase-config";
+import AddLectures from "./components/Admin/AddLecture.js";
+import Deneme from "./components/Test.js";
 
 function App() {
   const [user, setUser] = useState();
@@ -44,6 +46,9 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
+        <Route path="/test">
+          <Deneme />
+        </Route>
         <Route path="/courses">
           <Courses />
         </Route>
@@ -62,6 +67,10 @@ function App() {
         <Route path="/addCourse">
           {" "}
           <AddCourses />{" "}
+        </Route>
+        <Route path="/addLecture">
+          {" "}
+          <AddLectures />{" "}
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
