@@ -7,6 +7,7 @@ import IndexPage from "./components/dynamic/IndexPage.js";
 import Home from "./components/dynamic/Home.js";
 import SignUp from "./components/dynamic/SignUp.js";
 import SignInSide from "./components/dynamic/SignIn.js";
+import Quizes from "./components/dynamic/Quiz"
 
 import AddCourses from "./components/Admin/AddCourse.js";
 import Courses from "./components/dynamic/Courses.js";
@@ -64,6 +65,9 @@ function App() {
           {" "}
           <Courses />{" "}
         </Route>
+        <Route path="/quizes" >
+          <Quizes/>
+          </Route>
         <Route path="/addCourse">
           {" "}
           <AddCourses />{" "}
