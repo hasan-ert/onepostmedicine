@@ -1,22 +1,34 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Grid, Typography } from "@mui/material";
 import MediaCard from "../Sub-Components/Cards";
 import "../componentCss/MainComponents/Courses.css";
 import { createURL } from "../../helpers/helpers";
+import {
+  collection,
+  getDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
+
+import { db } from "../../constants/firebase-config";
+import { auth } from "../../constants/firebase-config";
 
 function createCardRows(data, history) {
   const changeURL = (courseName) => {
     history.push(createURL("/lecture", courseName));
   };
+
   return data.map(function (item) {
     return (
       <Grid item xs={12} lg={4} md={6} display="flex">
         <MediaCard
-          onClickHandler={changeURL}
+          onClickHandler={() => changeURL(item.data().course_name)}
           cssClass="floating-card"
-          imgSource={item.imgSource}
-          contentHeader={item.contentHeader}
+          imgSource={item.data().imgURL}
+          contentHeader={item.data().course_name}
           contentHeaderVar="20pt"
           backColor={item.backColor ? item.backColor : "rgb(50, 100, 139)"}
         ></MediaCard>
@@ -27,6 +39,29 @@ function createCardRows(data, history) {
 
 export default function Courses({ authHandler }) {
   let history = useHistory();
+  //states
+  const [courses, setCourses] = useState([]);
+
+  //Fetch course datas
+  const getCourseData = async () => {
+    const dataArray = [];
+    const querySnapshot = await getDocs(collection(db, "courses"));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      dataArray.push(doc);
+    });
+    console.log(dataArray[0].data());
+    setCourses(dataArray);
+  };
+  //useEffects
+  useEffect(() => {
+    getCourseData();
+  }, []);
+
+  //handlers
+  const handleCourse = (e) => {
+    setCourses(e);
+  };
   const data = [
     {
       imgSource:
@@ -80,7 +115,7 @@ export default function Courses({ authHandler }) {
         </Typography>
       </Grid>
 
-      {createCardRows(data, history)}
+      {createCardRows(courses, history)}
     </Grid>
   );
 }

@@ -26,7 +26,8 @@ export default function AddCourses() {
         course_name: data.get("course_name"),
         quiz_id: "",
         video_num: "",
-        videos: imgList,
+        imgURL: imgList[0],
+        lectures: [],
       });
       history.push("/addCourse");
     } catch (error) {
