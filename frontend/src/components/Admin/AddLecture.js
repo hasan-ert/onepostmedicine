@@ -84,6 +84,7 @@ export default function AddLectures() {
       lectures = [...lectures, lectureName];
       console.log(relatedCourse, lectures);
       await updateDoc(coursesCollectionRef, { lectures: lectures });
+      alert("Lecture is added");
     } catch (err) {
       console.log(err);
     }
@@ -94,6 +95,11 @@ export default function AddLectures() {
   const createLecture = async (event) => {
     event.preventDefault();
     console.log(event.currentTarget);
+    if (videoURL[0] === undefined) {
+      alert("please add a video");
+      return;
+    }
+    console.log(videoURL[0]);
     const data = new FormData(event.currentTarget);
 
     console.log(relatedCourse);
@@ -105,6 +111,7 @@ export default function AddLectures() {
         video_url: videoURL,
       });
       updateCourse(data.get("lectureName"));
+
       history.push("/addLecture");
     } catch (error) {
       console.log(error.message);
