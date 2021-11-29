@@ -1,18 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Button, Container, Grid, Typography } from "@mui/material";
+
+import { Grid } from "@mui/material";
 import "../componentCss/site.css";
 import "./css/UnfinishedCourses.css";
 
-function CreateRows(courseList) {
-  return courseList.map(function (course) {
+function CreateRows(data) {
+  return data.map(function (item) {
     return (
       <Grid
         xs={12}
         className="unfinished-course-row"
-        onClick={() => alert(course.courseName)}
+        onClick={() => alert(item.courseName)}
       >
-        <h1>{course.courseName}</h1>
+        <h1>{item.courseName}</h1>
       </Grid>
     );
   });

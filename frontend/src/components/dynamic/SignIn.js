@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState,useRef,useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,7 +12,14 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {
+  signInWithEmailAndPassword,
+  
 
+} from "firebase/auth";
+
+import {auth} from '../../constants/firebase-config'
+import { useHistory } from 'react-router';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,14 +36,22 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
-  const handleSubmit = (event) => {
+
+  const history = useHistory();
+  const login = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        data.get('email'),
+        data.get('password')
+      );
+      history.push('/home')
+    } catch (error) {
+      console.log(error.message);
+      alert('Unregistered User')
+    }
   };
 
   return (
@@ -73,7 +88,7 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={(event) => login(event)} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -83,6 +98,7 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+ 
               />
               <TextField
                 margin="normal"
@@ -93,6 +109,7 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -103,17 +120,14 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+
               >
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
+              
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/signup" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

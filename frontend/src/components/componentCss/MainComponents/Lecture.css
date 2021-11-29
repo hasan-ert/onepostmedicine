@@ -1,0 +1,9 @@
+.video-js {
+  width: 90%;
+  height: 100%;
+}
+
+#transcript-panel {
+  padding: 5%;
+  font-size: 16pt;
+}

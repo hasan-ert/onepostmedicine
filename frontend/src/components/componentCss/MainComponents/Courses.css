@@ -1,8 +1,1 @@
-#floating-card {
-  margin-top: 0rem;
-  transition: margin 0.5s ease-in-out;
-}
 
-#floating-card:hover {
-  margin-top: -1rem;
-}
