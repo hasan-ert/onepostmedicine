@@ -25,6 +25,7 @@ import { db } from "../../constants/firebase-config";
 import { auth } from "../../constants/firebase-config";
 
 import { useHistory } from "react-router";
+import { UpEachWord } from "../../helpers/helpers";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -105,7 +106,7 @@ export default function AddLectures() {
     console.log(relatedCourse);
     try {
       await addDoc(lecturesCollectionRef, {
-        lecture_name: data.get("lectureName"),
+        lecture_name: UpEachWord(data.get("lectureName")),
         parent_category: relatedCourse.course_name,
         transcript: data.get("transcript"),
         video_url: videoURL,

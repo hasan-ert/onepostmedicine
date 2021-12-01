@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Grid, Box, TextField, Button } from "@mui/material";
 import MediaUploader from "../../helpers/CloudinaryWidget";
 
+import UpEachWord from "../../helpers/helpers";
 import { collection, getDocs, addDoc, doc } from "firebase/firestore";
 import { db } from "../../constants/firebase-config";
 import { auth } from "../../constants/firebase-config";
@@ -25,7 +26,7 @@ export default function AddCourses() {
     debugger;
     try {
       await addDoc(usersCollectionRef, {
-        course_name: data.get("course_name"),
+        course_name: UpEachWord(data.get("course_name")),
         quiz_id: "",
         video_num: "",
         imgURL: imgList[0],
