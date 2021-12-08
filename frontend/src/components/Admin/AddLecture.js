@@ -19,12 +19,15 @@ import {
   getDocs,
   addDoc,
   updateDoc,
+  query,
+  where,
   doc,
 } from "firebase/firestore";
 import { db } from "../../constants/firebase-config";
 import { auth } from "../../constants/firebase-config";
 
 import { useHistory } from "react-router";
+import { UpEachWord } from "../../helpers/helpers";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -96,16 +99,35 @@ export default function AddLectures() {
     event.preventDefault();
     console.log(event.currentTarget);
     if (videoURL[0] === undefined) {
-      alert("please add a video");
+      alert("Please add a video");
       return;
     }
-    console.log(videoURL[0]);
     const data = new FormData(event.currentTarget);
-
+    console.log(data.get("lectureName"));
     console.log(relatedCourse);
     try {
+      let q = query(
+        lecturesCollectionRef,
+        where("lecture_name", "==", UpEachWord(data.get("lectureName"))),
+        where("parent_category", "==", UpEachWord(relatedCourse.course_name))
+      );
+
+      let querySnapshot = await getDocs(q);
+      debugger;
+      querySnapshot.forEach((element) => {
+        console.log(element.data());
+      });
+
+      if (querySnapshot.docs !== undefined && querySnapshot.docs.length > 0) {
+        console.log(querySnapshot.docs);
+        alert(
+          "A lecture with the same name exists! Please choose another name"
+        );
+        return;
+      }
+
       await addDoc(lecturesCollectionRef, {
-        lecture_name: data.get("lectureName"),
+        lecture_name: UpEachWord(data.get("lectureName")),
         parent_category: relatedCourse.course_name,
         transcript: data.get("transcript"),
         video_url: videoURL,

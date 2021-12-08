@@ -3,14 +3,15 @@ import React from "react";
 import { Grid } from "@mui/material";
 import "../componentCss/site.css";
 import "./css/UnfinishedCourses.css";
-
-function CreateRows(data) {
+import changeURL from "../../helpers/helpers";
+import { Link, useHistory } from "react-router-dom";
+function CreateRows(data, history) {
   return data.map(function (item) {
     return (
       <Grid
         xs={12}
         className="unfinished-course-row"
-        onClick={() => alert(item.courseName)}
+        onClick={() => history.push(changeURL("/lecture", item.courseName))}
       >
         <h1>{item.courseName}</h1>
       </Grid>
@@ -18,7 +19,8 @@ function CreateRows(data) {
   });
 }
 
-function UnfinishedCourses() {
+function UnfinishedCourses({ data, parentPage }) {
+  let history = useHistory();
   let unfinished = [
     { courseName: "Course 1" },
     { courseName: "Course 2" },
@@ -34,7 +36,7 @@ function UnfinishedCourses() {
       height="500px"
       className="unfinished-course-container"
     >
-      {CreateRows(unfinished)}
+      {CreateRows(unfinished, history)}
     </Grid>
   );
 }
