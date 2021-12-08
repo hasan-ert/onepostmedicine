@@ -1,0 +1,16 @@
+.Quiz_render_container{
+    height: 100%;
+    padding: 2rem;
+    margin: 2rem;
+}
+.Quiz_inner_container{
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+.Quiz_render_container{
+    border-radius: 1rem;
+    border-color: purple !important;
+    border: solid;
+    background-color: beige;
+}
