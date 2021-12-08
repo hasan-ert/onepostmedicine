@@ -132,7 +132,7 @@ function Home() {
   return (
     <Container maxWidth="100%">
       <Grid container spacing={2} marginTop="10px">
-        <Grid item lg={2} xs={12} alignItems="center">
+        <Grid item lg={2} xs={12}  alignItems="center">
           <PermanentDrawerLeft></PermanentDrawerLeft>
         </Grid>
         <Grid item lg={7} marginTop="20px" xs={12} alignItems="center">
