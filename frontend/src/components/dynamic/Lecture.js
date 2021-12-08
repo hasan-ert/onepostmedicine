@@ -34,8 +34,7 @@ export default function Lecture() {
   const [allLectures, setAllLectures] = useState([]);
 
   //Params
-  const lec_name_param = useParams();
-
+  const { coursename, name } = useParams();
   //Collection References
   const lecturesRef = collection(db, "lectures");
   const coursesRef = collection(db, "courses");
@@ -45,7 +44,7 @@ export default function Lecture() {
   //useEffects
   useEffect(() => {
     getLectureData();
-  }, [lec_name_param]);
+  }, [name]);
 
   useEffect(() => {
     getALLLectureData();
@@ -58,9 +57,14 @@ export default function Lecture() {
   //Fetch lecture data
   const getLectureData = async () => {
     // preprocess the parameter lecture name that is passed to this page to match db values
-    const lectureName = UpEachWord(lec_name_param.name);
-    console.log(lectureName);
-    let q = query(lecturesRef, where("lecture_name", "==", lectureName));
+    console.log(name);
+    const lectureName = UpEachWord(name);
+    console.log(coursename);
+    let q = query(
+      lecturesRef,
+      where("lecture_name", "==", lectureName),
+      where("parent_category", "==", coursename)
+    );
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -105,7 +109,11 @@ export default function Lecture() {
       <Grid item lg={3} xs={12} textAlign="center">
         <h2>Lectures</h2>
         <Grid item display="flex">
-          <LecturesBox parentPage="lecture" data={allLectures}></LecturesBox>
+          <LecturesBox
+            parentPage="lecture"
+            course={coursename}
+            data={allLectures}
+          ></LecturesBox>
         </Grid>
       </Grid>
       <Grid item lg={9} xs={12} textAlign="justify" id="transcript-panel">

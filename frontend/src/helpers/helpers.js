@@ -11,6 +11,8 @@ export const isAuthorized = (user) => {
 };
 
 export const UpEachWord = (word) => {
+  var regex = /[ -]+/;
+  if (!word.match(regex)) return word.charAt(0).toUpperCase() + word.slice(1);
   let temp = word.split(/[ -]+/);
   let newWord = "";
   temp.forEach((element, index, array) => {

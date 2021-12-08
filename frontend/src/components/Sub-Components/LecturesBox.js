@@ -6,14 +6,16 @@ import "./css/UnfinishedCourses.css";
 import changeURL from "../../helpers/helpers";
 import { useHistory } from "react-router";
 
-function CreateRows(data, parentPage, history) {
+function CreateRows(data, parentPage, course, history) {
   console.log(data);
   return data.map(function (item) {
     return (
       <Grid
         xs={12}
         className="unfinished-course-row"
-        onClick={() => history.push(changeURL("/" + parentPage, item))}
+        onClick={() =>
+          history.push(changeURL("/" + parentPage + "/" + course, item))
+        }
       >
         <h1>{item}</h1>
       </Grid>
@@ -21,7 +23,7 @@ function CreateRows(data, parentPage, history) {
   });
 }
 
-function LecturesBox({ data, parentPage }) {
+function LecturesBox({ data, parentPage, course }) {
   let history = useHistory();
   let unfinished = [
     { lecture_name: "Course 1" },
@@ -43,7 +45,7 @@ function LecturesBox({ data, parentPage }) {
       height="500px"
       className="unfinished-course-container"
     >
-      {CreateRows(lectures, parentPage, history)}
+      {CreateRows(lectures, parentPage, course, history)}
     </Grid>
   );
 }

@@ -17,15 +17,17 @@ import { db } from "../../constants/firebase-config";
 import { auth } from "../../constants/firebase-config";
 
 function createCardRows(data, history) {
-  const changeURL = (lectureName) => {
-    history.push(createURL("/lecture", lectureName));
+  const changeURL = (coursename, lectureName) => {
+    history.push(createURL("/lecture/" + coursename, lectureName));
   };
 
   return data.map(function (item) {
     return (
       <Grid item xs={12} lg={4} md={6} display="flex">
         <MediaCard
-          onClickHandler={() => changeURL(item.data().lectures[0])}
+          onClickHandler={() =>
+            changeURL(item.data().course_name, item.data().lectures[0])
+          }
           cssClass="floating-card"
           imgSource={item.data().imgURL}
           contentHeader={item.data().course_name}
