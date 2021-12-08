@@ -3,6 +3,8 @@ import { MobileStepper ,Snackbar} from '@mui/material';
 import Button from '@mui/material/Button';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import MuiAlert from "@material-ui/lab/Alert";
+import "../componentCss/MainComponents/Quiz.css";
+
 
 
 
@@ -161,7 +163,7 @@ return(
              if( Math.abs(this.state.activeStep - index)<=0)
              {
                 return (
-                    <div>
+                    <div className="Quiz_inner_container">
                       <div className="Quiz_que">{item.que}</div>
                        
                           <div className="Quiz_options"> Options are : </div>

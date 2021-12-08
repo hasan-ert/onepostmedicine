@@ -23,6 +23,7 @@ import {
 import { auth } from "./constants/firebase-config";
 import AddLectures from "./components/Admin/AddLecture.js";
 import Deneme from "./components/Test.js";
+import Footer from "./components/Sub-Components/footer"
 
 function App() {
   const [user, setUser] = useState();
@@ -130,6 +131,7 @@ function App() {
     
         </Switch> */}
         {Authorization()}
+        <Footer/>
       </Container>
     </div>
   );
