@@ -24,7 +24,9 @@ import {
 import { auth } from "./constants/firebase-config";
 import AddLectures from "./components/Admin/AddLecture.js";
 import Deneme from "./components/Test.js";
-import Footer from "./components/Sub-Components/footer"
+import Footer from "./components/Sub-Components/footer";
+import AdminPanel from "./components/Admin/AdminPanel.js";
+import DeleteLectures from "./components/Admin/DeleteLecture.js";
 
 function App() {
   const [user, setUser] = useState();
@@ -52,6 +54,9 @@ function App() {
         <Route path="/test">
           <Deneme />
         </Route>
+        <Route path="/adminPanel">
+          <AdminPanel />
+        </Route>
         <Route path="/courses">
           <Courses />
         </Route>
@@ -78,9 +83,15 @@ function App() {
           {" "}
           <AddLectures />{" "}
         </Route>
+<<<<<<< HEAD
         <Route path="/addQuizzes">
           {" "}
           <AddQuizzes />{" "}
+=======
+        <Route path="/deleteLecture">
+          {" "}
+          <DeleteLectures />{" "}
+>>>>>>> efbcad6c5a12561948c44591c1ee9929fe1f7768
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
@@ -136,7 +147,7 @@ function App() {
     
         </Switch> */}
         {Authorization()}
-        <Footer/>
+        <Footer />
       </Container>
     </div>
   );

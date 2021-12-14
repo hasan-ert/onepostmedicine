@@ -78,7 +78,7 @@ export default function Lecture() {
   //Fetch lectures of the course
   const getALLLectureData = async () => {
     // preprocess the parameter lecture name that is passed to this page to match db values
-    debugger;
+
     const parentCourseName = UpEachWord(lecture.parent_category);
     console.log(parentCourseName);
     let q = query(coursesRef, where("course_name", "==", parentCourseName));
