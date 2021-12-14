@@ -16,20 +16,9 @@ import {
   } from "firebase/firestore";
   
   import { db } from "../../constants/firebase-config";
+  
 
 
-const getidQuizData = async (parent_course) => {
-    const dataArray = [];
-    const q = query(collection(db, "quizzes"), where("parent_course", "==", parent_course));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        dataArray.push(doc.data());
-    });
-    return dataArray;
-};
-
-const quizset=getidQuizData("Hasan Deneme")
-console.log(quizset)
 
 
 const Quiz_Set = [
@@ -101,8 +90,7 @@ class Quiz extends Component{
 
     handleNext=()=>{
         this.setState({activeStep:this.state.activeStep+1})
-        const quizset=getidQuizData("Hasan Deneme")
-        console.log(quizset)
+        
         
     }
 

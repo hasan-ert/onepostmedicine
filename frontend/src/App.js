@@ -83,15 +83,13 @@ function App() {
           {" "}
           <AddLectures />{" "}
         </Route>
-<<<<<<< HEAD
         <Route path="/addQuizzes">
           {" "}
           <AddQuizzes />{" "}
-=======
+        </Route>
         <Route path="/deleteLecture">
           {" "}
           <DeleteLectures />{" "}
->>>>>>> efbcad6c5a12561948c44591c1ee9929fe1f7768
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
