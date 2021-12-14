@@ -23,8 +23,7 @@ import { auth } from "../../constants/firebase-config";
         const dataArray = [];
         const querySnapshot = await getDocs(collection(db, "users"));
         querySnapshot.forEach((doc) => {
-            dataArray.push(doc);
+            dataArray.push(doc.data());
         });
-        console.log(dataArray[0].data());
         return dataArray;
     };

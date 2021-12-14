@@ -4,9 +4,11 @@ import Button from '@mui/material/Button';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import MuiAlert from "@material-ui/lab/Alert";
 import "../componentCss/MainComponents/Quiz.css";
+import "../../../api/quiz.API"
 
 
-
+const quizset=getidQuizData("Hasan Deneme")
+console.log(quizset)
 
 const Quiz_Set = [
     {

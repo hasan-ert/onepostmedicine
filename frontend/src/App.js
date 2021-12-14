@@ -9,6 +9,7 @@ import SignUp from "./components/dynamic/SignUp.js";
 import SignInSide from "./components/dynamic/SignIn.js";
 import Quizes from "./components/dynamic/Quiz";
 
+import AddQuizzes from "./components/Admin/AddQuizzes";
 import AddCourses from "./components/Admin/AddCourse.js";
 import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
@@ -76,6 +77,10 @@ function App() {
         <Route path="/addLecture">
           {" "}
           <AddLectures />{" "}
+        </Route>
+        <Route path="/addQuizzes">
+          {" "}
+          <AddQuizzes />{" "}
         </Route>
         {/* <Route path="/login"></Route> */}
       </Switch>
