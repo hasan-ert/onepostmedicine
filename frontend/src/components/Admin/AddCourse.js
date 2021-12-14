@@ -23,7 +23,7 @@ export default function AddCourses() {
     console.log(event.currentTarget);
     const data = new FormData(event.currentTarget);
     console.log(data.get("course_name"));
-    debugger;
+
     try {
       await addDoc(usersCollectionRef, {
         course_name: UpEachWord(data.get("course_name")),

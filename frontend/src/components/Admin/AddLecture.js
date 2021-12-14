@@ -113,7 +113,7 @@ export default function AddLectures() {
       );
 
       let querySnapshot = await getDocs(q);
-      debugger;
+
       querySnapshot.forEach((element) => {
         console.log(element.data());
       });
