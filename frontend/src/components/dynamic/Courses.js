@@ -20,22 +20,22 @@ function createCardRows(data, history) {
   const changeURL = (coursename, lectureName) => {
     history.push(createURL("/lecture/" + coursename, lectureName));
   };
-
   return data.map(function (item) {
-    return (
-      <Grid item xs={12} lg={4} md={6} display="flex">
-        <MediaCard
-          onClickHandler={() =>
-            changeURL(item.data().course_name, item.data().lectures[0])
-          }
-          cssClass="floating-card"
-          imgSource={item.data().imgURL}
-          contentHeader={item.data().course_name}
-          contentHeaderVar="20pt"
-          backColor={item.backColor ? item.backColor : "rgb(50, 100, 139)"}
-        ></MediaCard>
-      </Grid>
-    );
+    if (item.data().lectures.length > 0)
+      return (
+        <Grid item xs={12} lg={4} md={6} display="flex">
+          <MediaCard
+            onClickHandler={() =>
+              changeURL(item.data().course_name, item.data().lectures[0])
+            }
+            cssClass="floating-card"
+            imgSource={item.data().imgURL}
+            contentHeader={item.data().course_name}
+            contentHeaderVar="20pt"
+            backColor={item.backColor ? item.backColor : "rgb(50, 100, 139)"}
+          ></MediaCard>
+        </Grid>
+      );
   });
 }
 

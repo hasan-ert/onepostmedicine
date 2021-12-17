@@ -53,19 +53,23 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
-      const user = await createUserWithEmailAndPassword(
+      const userSnap = await createUserWithEmailAndPassword(
         auth,
         data.get("email"),
         data.get("password")
       );
-      console.log(user);
+
       await addDoc(usersCollectionRef, {
+        user_id: userSnap.user.uid,
         name: data.get("firstName"),
         surname: data.get("lastName"),
         grade: "4",
         university: data.get("schoolname"),
         email: data.get("email"),
         password: data.get("password"),
+        overall_score: 0,
+        unfinished_courses: [],
+        completed_courses: [],
       });
       history.push("/home");
     } catch (error) {
