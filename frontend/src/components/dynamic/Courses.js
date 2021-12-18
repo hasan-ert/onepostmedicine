@@ -36,6 +36,7 @@ function createCardRows(data, history) {
           ></MediaCard>
         </Grid>
       );
+    return "";
   });
 }
 

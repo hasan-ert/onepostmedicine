@@ -37,36 +37,32 @@ function createRow(lbl, data) {
 }
 
 function createDataRows(data) {
-  console.log(data);
-
-  return (
-    <Grid
-      item
-      lg={8}
-      xs={12}
-      padding="16px"
-      marginX="0"
-      alignItems="center"
-      justifyContent="center"
-      className="user-data-row"
-      bgcolor="rgba(139,0,139,0.6)"
-    >
-      {createRow("Name:", data.name)}
-      {createRow("Surname:", data.surname)}
-      {createRow("University:", data.university)}
-      {createRow("Overall Score:", data.overall_score)}
-      {createRow("Completed Course Number:", data.completed_courses.length)}
-    </Grid>
-  );
+  if (data !== undefined)
+    return (
+      <Grid
+        item
+        lg={8}
+        xs={12}
+        padding="16px"
+        marginX="0"
+        alignItems="center"
+        justifyContent="center"
+        className="user-data-row"
+        bgcolor="rgba(139,0,139,0.6)"
+      >
+        {createRow("Name:", data.name)}
+        {createRow("Surname:", data.surname)}
+        {createRow("University:", data.university)}
+        {createRow("Overall Score:", data.overall_score)}
+        {data.completed_courses
+          ? createRow("Completed Course Number:", data.completed_courses.length)
+          : ""}
+      </Grid>
+    );
 }
 
 function HomePanel() {
-  const [data, setData] = useState({
-    University: "Sabanci University",
-    Grade: 4,
-    "Started Courses": 10,
-    "Overall Score": 3.67,
-  });
+  const [data, setData] = useState();
 
   const [progress, setProgress] = useState(0);
 
@@ -77,18 +73,19 @@ function HomePanel() {
   }, []);
 
   useEffect(() => {
-    if (
-      data.completed_courses &&
-      data.unfinished_courses &&
-      data.completed_courses.length + data.unfinished_courses.length > 0
-    ) {
-      setProgress(
-        data.completed_courses.length /
-          (data.completed_courses.length + data.unfinished_courses.length)
-      );
-    } else {
-      setProgress(0);
-    }
+    if (data !== undefined)
+      if (
+        data.completed_courses &&
+        data.unfinished_courses &&
+        data.completed_courses.length + data.unfinished_courses.length > 0
+      ) {
+        setProgress(
+          data.completed_courses.length /
+            (data.completed_courses.length + data.unfinished_courses.length)
+        );
+      } else {
+        setProgress(0);
+      }
 
     console.log(progress);
   }, [data]);

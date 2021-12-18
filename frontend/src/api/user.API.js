@@ -26,13 +26,15 @@ export const getAllUserData = async () => {
 };
 
 export const getUserData = async () => {
-  const id = auth.currentUser.uid;
-  const q = query(collection(db, "users"), where("user_id", "==", id));
-  const docSnapshot = await getDocs(q);
-  let user_data;
-  docSnapshot.forEach((element) => {
-    console.log(element.data());
-    user_data = element.data();
-  });
-  return user_data;
+  if (auth.currentUser !== null) {
+    const id = auth.currentUser.uid;
+    const q = query(collection(db, "users"), where("user_id", "==", id));
+    const docSnapshot = await getDocs(q);
+    let user_data;
+    docSnapshot.forEach((element) => {
+      user_data = element.data();
+    });
+    return user_data;
+  }
+  return;
 };

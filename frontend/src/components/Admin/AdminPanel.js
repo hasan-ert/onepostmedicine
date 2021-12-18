@@ -19,7 +19,7 @@ export default function AdminPanel() {
           padding="10px"
           textAlign="center"
         >
-          <Link to="/addQuiz">
+          <Link to="/addQuizzes">
             <div
               className="admin-card"
               style={{ backgroundColor: "rgb(119,84,215)", color: "white" }}

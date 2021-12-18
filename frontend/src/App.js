@@ -34,9 +34,10 @@ function App() {
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
+
   useEffect(() => {
     console.log(user);
-  }, []);
+  }, [user]);
 
   function Authorization() {
     return isAuthorized(user) ? Authorized() : unauthorized();
