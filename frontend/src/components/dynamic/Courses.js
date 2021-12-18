@@ -15,30 +15,7 @@ import {
 
 import { db } from "../../constants/firebase-config";
 import { auth } from "../../constants/firebase-config";
-
-function createCardRows(data, history) {
-  const changeURL = (coursename, lectureName) => {
-    history.push(createURL("/lecture/" + coursename, lectureName));
-  };
-  return data.map(function (item) {
-    if (item.data().lectures.length > 0)
-      return (
-        <Grid item xs={12} lg={4} md={6} display="flex">
-          <MediaCard
-            onClickHandler={() =>
-              changeURL(item.data().course_name, item.data().lectures[0])
-            }
-            cssClass="floating-card"
-            imgSource={item.data().imgURL}
-            contentHeader={item.data().course_name}
-            contentHeaderVar="20pt"
-            backColor={item.backColor ? item.backColor : "rgb(50, 100, 139)"}
-          ></MediaCard>
-        </Grid>
-      );
-    return "";
-  });
-}
+import { getUserData, updateUserData } from "../../api/user.API";
 
 export default function Courses({ authHandler }) {
   let history = useHistory();
@@ -65,46 +42,41 @@ export default function Courses({ authHandler }) {
   const handleCourse = (e) => {
     setCourses(e);
   };
-  const data = [
-    {
-      imgSource:
-        "https://img.freepik.com/free-photo/top-view-white-office-desk-table-with-copy-space-flat-lay_14098-383.jpg?size=626&ext=jpg",
-      contentHeader: "DenemeDenemeDenemeDenemeDenemeDenemeDeneme",
-      content: "deneme deneme deneme",
-    },
-    {
-      imgSource:
-        "https://img.freepik.com/free-photo/top-view-white-office-desk-table-with-copy-space-flat-lay_14098-383.jpg?size=626&ext=jpg",
-      contentHeader: "Denemeee",
-      content: "deneme deneme deneme",
-    },
-    {
-      imgSource:
-        "https://img.freepik.com/free-photo/top-view-white-office-desk-table-with-copy-space-flat-lay_14098-383.jpg?size=626&ext=jpg",
-      contentHeader: "Denemeee",
-      content: "deneme deneme deneme",
-    },
-    {
-      imgSource:
-        "https://img.freepik.com/free-photo/top-view-white-office-desk-table-with-copy-space-flat-lay_14098-383.jpg?size=626&ext=jpg",
-      contentHeader: "Denemeee",
-      content: "deneme deneme deneme",
-    },
 
-    {
-      imgSource:
-        "https://img.freepik.com/free-photo/top-view-white-office-desk-table-with-copy-space-flat-lay_14098-383.jpg?size=626&ext=jpg",
-      contentHeader: "Denemeee",
-      content: "deneme deneme deneme",
-    },
-    {
-      imgSource:
-        "https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      contentHeader: "Denemeeeeeeeeeeeeeeeeeeeeee",
-      content: "deneme deneme deneme",
-      backColor: "rgb(50,100,139)",
-    },
-  ];
+  function createCardRows(data, history) {
+    const changeURL = (coursename, lectureName) => {
+      history.push(createURL("/lecture/" + coursename, lectureName));
+    };
+    return data.map(function (item) {
+      if (item.data().lectures.length > 0)
+        return (
+          <Grid item xs={12} lg={4} md={6} display="flex">
+            <MediaCard
+              onClickHandler={() => {
+                addToUnfinishedCourses(item.data().course_name);
+                changeURL(item.data().course_name, item.data().lectures[0]);
+              }}
+              cssClass="floating-card"
+              imgSource={item.data().imgURL}
+              contentHeader={item.data().course_name}
+              contentHeaderVar="20pt"
+              backColor={item.backColor ? item.backColor : "rgb(50, 100, 139)"}
+            ></MediaCard>
+          </Grid>
+        );
+      return "";
+    });
+  }
+
+  function addToUnfinishedCourses(coursename) {
+    getUserData().then((res) => {
+      debugger;
+      let temp = res;
+      temp.unfinished_courses = [...temp.unfinished_courses, coursename];
+      updateUserData(temp);
+    });
+  }
+
   return (
     <Grid container marginTop="3rem" padding="3rem">
       <Grid item xs={12}>

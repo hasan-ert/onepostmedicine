@@ -26,6 +26,33 @@ export const getAllCourses = async () => {
   return dataArray;
 };
 
+export const getCourseData = async (coursename) => {
+  debugger;
+  let q = query(
+    collection(db, "courses"),
+    where("course_name", "==", coursename)
+  );
+  let querySnapshot = await getDocs(q);
+  let course_data;
+  querySnapshot.forEach((element) => {
+    course_data = element.data();
+  });
+  return course_data;
+};
+
+export const getCourseRef = async (coursename) => {
+  let q = query(
+    collection(db, "courses"),
+    where("course_name", "==", coursename)
+  );
+  let querySnapshot = await getDocs(q);
+  let courseRef;
+  querySnapshot.forEach((element) => {
+    courseRef = element;
+  });
+  return courseRef;
+};
+
 //To be able to reach the document, id is required.
 //Then update the parent course's lectures
 export const updateCourseLectures = async (

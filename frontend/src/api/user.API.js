@@ -15,6 +15,7 @@ import {
 import { db } from "../constants/firebase-config";
 import { auth } from "../constants/firebase-config";
 
+const userCollection = collection(db, "users");
 //Fetch user data
 export const getAllUserData = async () => {
   const dataArray = [];
@@ -37,4 +38,31 @@ export const getUserData = async () => {
     return user_data;
   }
   return;
+};
+
+const getUserRef = async () => {
+  if (auth.currentUser !== null) {
+    const id = auth.currentUser.uid;
+    const q = query(collection(db, "users"), where("user_id", "==", id));
+    const docSnapshot = await getDocs(q);
+    let userRef;
+    docSnapshot.forEach((element) => {
+      userRef = element;
+    });
+    return userRef;
+  }
+  return;
+};
+
+export const updateUserData = async (data) => {
+  await getUserRef().then((res) => {
+    console.log(res);
+    const userRef = doc(db, "users", res.id);
+    try {
+      updateDoc(userRef, data);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  });
 };

@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Grid } from "@mui/material";
 import "../componentCss/site.css";
 import "./css/UnfinishedCourses.css";
-import changeURL from "../../helpers/helpers";
+import changeURL, { createURL } from "../../helpers/helpers";
 import { Link, useHistory } from "react-router-dom";
+import { getUserData } from "../../api/user.API";
+import { getCourseData } from "../../api/course.API";
+
 function CreateRows(data, history) {
+  const prepareURL = async (coursename) => {
+    debugger;
+    getCourseData(coursename).then((res) =>
+      history.push(createURL("/lecture/" + res.course_name, res.lectures[0]))
+    );
+  };
   return data.map(function (item) {
     return (
       <Grid
         xs={12}
         className="unfinished-course-row"
-        onClick={() => history.push(changeURL("/lecture", item.courseName))}
+        onClick={() => prepareURL(item)}
       >
-        <h1>{item.courseName}</h1>
+        <h1>{item}</h1>
       </Grid>
     );
   });
@@ -21,13 +30,13 @@ function CreateRows(data, history) {
 
 function UnfinishedCourses({ data, parentPage }) {
   let history = useHistory();
-  let unfinished = [
-    { courseName: "Course 1" },
-    { courseName: "Course 2" },
-    { courseName: "Course 3" },
-    { courseName: "Course 4" },
-    { courseName: "Course 5" },
-  ];
+  const [unfinished, setUnfinished] = useState();
+  useEffect(() => {
+    getUserData().then((res) => {
+      setUnfinished(res.unfinished_courses);
+    });
+  }, [data]);
+
   return (
     <Grid
       item
@@ -36,7 +45,7 @@ function UnfinishedCourses({ data, parentPage }) {
       height="500px"
       className="unfinished-course-container"
     >
-      {CreateRows(unfinished, history)}
+      {unfinished ? CreateRows(unfinished, history) : ""}
     </Grid>
   );
 }
