@@ -1,4 +1,9 @@
-
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { Grid, Typography } from "@mui/material";
+import MediaCard from "../Sub-Components/Cards";
+import "../componentCss/MainComponents/Courses.css";
+import { createURL } from "../../helpers/helpers";
 import {
   collection,
   getDoc,
@@ -6,14 +11,15 @@ import {
   addDoc,
   updateDoc,
   doc,
-  where,query
 } from "firebase/firestore";
 
-import { db } from "../constants/firebase-config"; 
+import { db } from "../../constants/firebase-config";
+import { auth } from "../../constants/firebase-config";
+
 
 
     //Fetch user data
-    export default async function getAllUserData(){
+    const getUserData = async () => {
         const dataArray = [];
         const querySnapshot = await getDocs(collection(db, "users"));
         querySnapshot.forEach((doc) => {
@@ -21,14 +27,3 @@ import { db } from "../constants/firebase-config";
         });
         return dataArray;
     };
-
-
-    export async function getUserData(email){
-      const dataArray = [];
-      const q = query(collection(db, "users"), where("email" , "==", email))
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-          dataArray.push(doc.data());
-      });
-      return dataArray;
-  };

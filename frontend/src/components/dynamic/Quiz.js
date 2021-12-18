@@ -4,6 +4,19 @@ import Button from '@mui/material/Button';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import MuiAlert from "@material-ui/lab/Alert";
 import "../componentCss/MainComponents/Quiz.css";
+import {
+    collection,
+    getDoc,
+    getDocs,
+    addDoc,
+    updateDoc,
+    query,
+    where,
+    doc,
+  } from "firebase/firestore";
+  
+  import { db } from "../../constants/firebase-config";
+  
 
 
 
@@ -77,6 +90,8 @@ class Quiz extends Component{
 
     handleNext=()=>{
         this.setState({activeStep:this.state.activeStep+1})
+        
+        
     }
 
     handleBack=()=>{
