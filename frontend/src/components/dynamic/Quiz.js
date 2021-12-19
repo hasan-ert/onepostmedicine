@@ -117,7 +117,7 @@ console.log("questions",questions.questions[0]);
 		}
 
 		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
+		if (nextQuestion < questions.questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
