@@ -79,7 +79,14 @@ export default function Navbar({ user }) {
       <AppBar position="static">
         <Toolbar className="navbar">
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            One Post Medicine
+            <Button
+              onClick={() => {
+                history.push("/");
+              }}
+              style={{ color: "white" }}
+            >
+              One Post Medicine
+            </Button>
           </Typography>
           {isAuth()}
         </Toolbar>

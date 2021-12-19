@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
-    Container,
-    Grid,
-    Box,
-    TextField,
-    Button,
-    Select,
-    InputLabel,
-    MenuItem,
-    useTheme,
-  } from "@mui/material";
+  Container,
+  Grid,
+  Box,
+  TextField,
+  Button,
+  Select,
+  InputLabel,
+  MenuItem,
+  useTheme,
+} from "@mui/material";
 
 import MediaUploader from "../../helpers/CloudinaryWidget";
 
@@ -23,20 +23,21 @@ import {
   query,
   where,
   doc,
-} from "firebase/firestore";import { db } from "../../constants/firebase-config";
+} from "firebase/firestore";
+import { db } from "../../constants/firebase-config";
 import { auth } from "../../constants/firebase-config";
 
 import { useHistory } from "react-router";
 
 export default function AddQuizzes() {
-    const [relatedCourse, setRelatedCourse] = useState({ course_name: "" });
-    const [relatedCourseID, setRelatedCourseID] = useState({ course_name: "" });
-    const [courses, setCourses] = useState([]);
-    const [val, setVal] = useState();
-    const [quiz,setQuiz]=useState();
+  const [relatedCourse, setRelatedCourse] = useState({ course_name: "" });
+  const [relatedCourseID, setRelatedCourseID] = useState({ course_name: "" });
+  const [courses, setCourses] = useState([]);
+  const [val, setVal] = useState();
+  const [quiz, setQuiz] = useState();
 
   let history = useHistory();
-  const quizzesRef = collection(db, 'quizzes');
+  const quizzesRef = collection(db, "quizzes");
 
   const getData = async () => {
     const dataArray = [];
@@ -66,44 +67,43 @@ export default function AddQuizzes() {
     getData();
   }, [courses.length]);
 
-   //handler for course selection
-    const handleCourseChange = (data, id) => {
+  //handler for course selection
+  const handleCourseChange = (data, id) => {
     setRelatedCourse(data);
     setRelatedCourseID(id);
-    getQuizRef(data.course_name)
+    getQuizRef(data.course_name);
   };
 
-  
   const addQuizzes = async (event) => {
     event.preventDefault();
     console.log(event.currentTarget);
     const data = new FormData(event.currentTarget);
-      console.log(relatedCourse.course_name)
-      const quizColectionref=doc(db,"quizzes",quiz.id)
-      try {
-        let questions =quiz.data().questions;
-        questions= [...questions,
-          {
-            questionText :data.get("que"),
-            answerOptions : 
-            [
-              {answerText: data.get("option1") , isCorrect: false},
-              {answerText:data.get("option2"), isCorrect: false},
-              {answerText:data.get("option3"), isCorrect: false},
-              {answerText:data.get("answer"), isCorrect: true},
-            ]
-        }
-        ];
-        console.log(relatedCourse, questions);
-        await updateDoc(quizColectionref, { questions: questions });
-        alert("quiz is added");
-      } catch (err) {
-        console.log(err);
-      }   
-
-    };
-   //Dynamically creating the courses for select box
-   function createSelectCourse() {
+    console.log(relatedCourse.course_name);
+    const quizColectionref = doc(db, "quizzes", quiz.id);
+    try {
+      let questions = quiz.data().questions;
+      questions = [
+        ...questions,
+        {
+          questionText: data.get("que"),
+          answerOptions: [
+            { answerText: data.get("option1"), isCorrect: false },
+            { answerText: data.get("option2"), isCorrect: false },
+            { answerText: data.get("option3"), isCorrect: false },
+            { answerText: data.get("answer"), isCorrect: true },
+          ],
+        },
+      ];
+      console.log(relatedCourse, questions);
+      await updateDoc(quizColectionref, { questions: questions });
+      alert("quiz is added");
+    } catch (err) {
+      console.log(err);
+    }
+    getQuizRef(relatedCourse.course_name);
+  };
+  //Dynamically creating the courses for select box
+  function createSelectCourse() {
     return courses && courses.length !== 0
       ? courses.map(function (course) {
           return (
@@ -159,7 +159,6 @@ export default function AddQuizzes() {
                   type="text"
                   id="que"
                   value={val}
-
                 />
               </Grid>
               <Grid item xs={12} lg={12} marginTop="5%">
@@ -173,7 +172,6 @@ export default function AddQuizzes() {
                   type="text"
                   id="option1"
                   value={val}
-
                 />
               </Grid>
               <Grid item xs={12} lg={12} marginTop="5%">
@@ -187,7 +185,6 @@ export default function AddQuizzes() {
                   type="text"
                   id="option2"
                   value={val}
-
                 />
               </Grid>
               <Grid item xs={12} lg={12} marginTop="5%">
@@ -201,7 +198,6 @@ export default function AddQuizzes() {
                   type="text"
                   id="option3"
                   value={val}
-
                 />
               </Grid>
               <Grid item xs={12} lg={12} marginTop="5%">
@@ -216,7 +212,6 @@ export default function AddQuizzes() {
                   type="text"
                   id="answer"
                   value={val}
-
                 />
               </Grid>
               <Grid item xs={12} lg={12} textAlign="center">

@@ -99,7 +99,7 @@ export default function DeleteLectures() {
   const deleteLecture = async (event) => {
     event.preventDefault();
     console.log(lecture.id);
-    debugger;
+
     try {
       let q = query(
         lecturesCollectionRef,

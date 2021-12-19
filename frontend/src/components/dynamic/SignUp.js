@@ -70,6 +70,8 @@ export default function SignUp() {
         overall_score: 0,
         unfinished_courses: [],
         completed_courses: [],
+        is_admin: false,
+        img_url: "",
       });
       history.push("/home");
     } catch (error) {

@@ -7,23 +7,32 @@ import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
 function PermanentDrawerLeft() {
   return (
     <Box
-    sx={{
-      width: drawerWidth,
-      flexShrink: 0,
-      width: drawerWidth, boxSizing: 'border-box',marginTop:'4.5rem',border:"none",justifyContent:"center",
-    }}
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        width: drawerWidth,
+        boxSizing: "border-box",
+        marginTop: "4.5rem",
+        border: "none",
+        justifyContent: "center",
+      }}
     >
       <Box sx={{ overflow: "auto" }}>
-        <List sx={{marginRight: "2rem"}}
->
-          {["Home", "Courses", "Test and Quizes", "User"].map((text, index) => (
-            <ListItem button key={text}>
+        <List sx={{ marginRight: "2rem" }}>
+          {["Home", "Courses", "Quizzes", "User"].map((text, index) => (
+            <ListItem
+              button
+              key={text}
+              component={Link}
+              to={"/" + text.toLowerCase()}
+            >
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>

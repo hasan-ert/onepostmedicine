@@ -27,7 +27,6 @@ export const getAllCourses = async () => {
 };
 
 export const getCourseData = async (coursename) => {
-  debugger;
   let q = query(
     collection(db, "courses"),
     where("course_name", "==", coursename)

@@ -10,7 +10,6 @@ import { getCourseData } from "../../api/course.API";
 
 function CreateRows(data, history) {
   const prepareURL = async (coursename) => {
-    debugger;
     getCourseData(coursename).then((res) =>
       history.push(createURL("/lecture/" + res.course_name, res.lectures[0]))
     );
