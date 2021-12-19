@@ -7,13 +7,15 @@ import IndexPage from "./components/dynamic/IndexPage.js";
 import Home from "./components/dynamic/Home.js";
 import SignUp from "./components/dynamic/SignUp.js";
 import SignInSide from "./components/dynamic/SignIn.js";
-import Quizes from "./components/dynamic/Quiz";
+import Quiz from "./components/dynamic/Quiz";
 
 import AddQuizzes from "./components/Admin/AddQuizzes";
+import CreateQuizzes from"./components/Admin/CreateQuizzzes"
 import AddCourses from "./components/Admin/AddCourse.js";
 import Courses from "./components/dynamic/Courses.js";
 import ScrollToTop from "./helpers/ScrollToTop.js";
 import Lecture from "./components/dynamic/Lecture.js";
+import Quizzes from "./components/dynamic/Quizzes"
 import { isAuthorized } from "./helpers/helpers";
 import {
   createUserWithEmailAndPassword,
@@ -63,7 +65,10 @@ function App() {
         </Route>
         <Route path="/lecture/:coursename/:name">
           <Lecture />
-        </Route>
+        </Route> 
+        <Route path="/quiz/:coursename">
+          <Quiz />
+        </Route> 
         {/* <Route path="/login"></Route> */}
         {/* <Route path="/home">
           {Authorization}
@@ -74,7 +79,7 @@ function App() {
           <Courses />{" "}
         </Route>
         <Route path="/quizes">
-          <Quizes />
+          <Quizzes/>
         </Route>
         <Route path="/addCourse">
           {" "}
@@ -86,6 +91,7 @@ function App() {
         </Route>
         <Route path="/addQuizzes">
           {" "}
+          <CreateQuizzes/>{" "}
           <AddQuizzes />{" "}
         </Route>
         <Route path="/deleteLecture">
