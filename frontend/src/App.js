@@ -27,6 +27,7 @@ import Deneme from "./components/Test.js";
 import Footer from "./components/Sub-Components/footer";
 import AdminPanel from "./components/Admin/AdminPanel.js";
 import DeleteLectures from "./components/Admin/DeleteLecture.js";
+import EditProfile from "./components/dynamic/EditProfile.js";
 
 function App() {
   const [user, setUser] = useState();
@@ -60,6 +61,9 @@ function App() {
         </Route>
         <Route path="/courses">
           <Courses />
+        </Route>
+        <Route path="/editProfile">
+          <EditProfile />
         </Route>
         <Route path="/lecture/:coursename/:name">
           <Lecture />
