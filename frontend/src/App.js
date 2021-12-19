@@ -73,7 +73,7 @@ function App() {
           {" "}
           <Courses />{" "}
         </Route>
-        <Route path="/quizes">
+        <Route path="/quizzes">
           <Quizes />
         </Route>
         <Route path="/addCourse">

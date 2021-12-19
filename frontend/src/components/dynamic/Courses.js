@@ -72,7 +72,11 @@ export default function Courses({ authHandler }) {
     getUserData().then((res) => {
       debugger;
       let temp = res;
-      temp.unfinished_courses = [...temp.unfinished_courses, coursename];
+      if (
+        !temp.unfinished_courses.includes(coursename) &&
+        !temp.completed_courses.includes(coursename)
+      )
+        temp.unfinished_courses = [...temp.unfinished_courses, coursename];
       updateUserData(temp);
     });
   }

@@ -71,6 +71,7 @@ export default function SignUp() {
         unfinished_courses: [],
         completed_courses: [],
         is_admin: false,
+        img_url: "",
       });
       history.push("/home");
     } catch (error) {
