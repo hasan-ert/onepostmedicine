@@ -7,7 +7,7 @@ import "../componentCss/site.css";
 import "../componentCss/MainComponents/Lecture.css";
 
 import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
-
+import { Grid } from "@mui/material";
 import { db } from "../../constants/firebase-config";
 import { UpEachWord } from "../../helpers/helpers";
 
@@ -91,43 +91,63 @@ export default function Quiz() {
 
       temp.completed_courses = [...temp.completed_courses, coursename];
       updateUserData(temp);
+      alert("You passed the course!");
     }
   };
-  return (
-    <div className="wraper">
-      <div className="quizdiv">
-        {showScore ? (
-          <div className="score-section">
-            You scored {score} out of {questions.questions.length}
+
+  function renderPage() {
+    console.log(questions);
+    debugger;
+    if (questions.questions.length < 2) {
+      return (
+        <Grid
+          container
+          textAlign="center"
+          justifyContent={"center"}
+          marginTop="40px"
+        >
+          <h1>There are no quizzes for this course yet. Check it out later.</h1>
+        </Grid>
+      );
+    } else {
+      return (
+        <div className="wraper">
+          <div className="quizdiv">
+            {showScore ? (
+              <div className="score-section">
+                You scored {score} out of {questions.questions.length}
+              </div>
+            ) : (
+              <>
+                <div className="question-section">
+                  <div className="question-count">
+                    <span>Question {currentQuestion + 1}</span>/
+                    {questions.questions.length}
+                  </div>
+                  <div className="question-text">
+                    {questions.questions[currentQuestion].questionText}
+                  </div>
+                </div>
+                <div className="answer-section">
+                  {questions.questions[currentQuestion].answerOptions.map(
+                    (answerOption) => (
+                      <button
+                        className="quizbutton"
+                        onClick={() =>
+                          handleAnswerOptionClick(answerOption.isCorrect)
+                        }
+                      >
+                        {answerOption.answerText}
+                      </button>
+                    )
+                  )}
+                </div>
+              </>
+            )}
           </div>
-        ) : (
-          <>
-            <div className="question-section">
-              <div className="question-count">
-                <span>Question {currentQuestion + 1}</span>/
-                {questions.questions.length}
-              </div>
-              <div className="question-text">
-                {questions.questions[currentQuestion].questionText}
-              </div>
-            </div>
-            <div className="answer-section">
-              {questions.questions[currentQuestion].answerOptions.map(
-                (answerOption) => (
-                  <button
-                    className="quizbutton"
-                    onClick={() =>
-                      handleAnswerOptionClick(answerOption.isCorrect)
-                    }
-                  >
-                    {answerOption.answerText}
-                  </button>
-                )
-              )}
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  );
+        </div>
+      );
+    }
+  }
+  return renderPage();
 }
