@@ -11,9 +11,7 @@ import { auth } from "../../constants/firebase-config";
 import { useHistory } from "react-router";
 
 export default function AddCourses() {
-  const [imgList, setImgList] = useState([
-    "https://img.freepik.com/free-photo/top-view-white-office-desk-table-with-copy-space-flat-lay_14098-383.jpg?size=626&ext=jpg",
-  ]);
+  const [imgList, setImgList] = useState([]);
 
   let history = useHistory();
   const usersCollectionRef = collection(db, "courses");
@@ -29,7 +27,9 @@ export default function AddCourses() {
         course_name: UpEachWord(data.get("course_name")),
         quiz_id: "",
         video_num: "",
-        imgURL: imgList[0],
+        imgURL: imgList[0]
+          ? imgList[0]
+          : "https://img.freepik.com/free-photo/top-view-white-office-desk-table-with-copy-space-flat-lay_14098-383.jpg?size=626&ext=jpg",
         lectures: [],
       });
       alert("Course is added");

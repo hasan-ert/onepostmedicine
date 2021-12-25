@@ -61,8 +61,11 @@ export const updateUserData = async (data) => {
     try {
       updateDoc(userRef, data);
       console.log(data);
+      alert("Successfully updated");
+      return true;
     } catch (err) {
       console.log(err);
+      return false;
     }
   });
 };

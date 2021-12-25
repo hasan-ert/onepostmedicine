@@ -24,7 +24,6 @@ export default function DisplayUsers() {
                     lg={3}
                     border={"solid"}
                     borderColor={"black"}
-                    borderRadius={"10px"}
                     padding="10px"
                     style={{ wordBreak: "break-word" }}
                     bgcolor={gridColor}
@@ -38,7 +37,6 @@ export default function DisplayUsers() {
                     lg={3}
                     border={"solid"}
                     borderColor={"black"}
-                    borderRadius={"10px"}
                     padding="10px"
                     style={{ wordBreak: "break-word" }}
                     bgcolor={gridColor}
@@ -51,7 +49,6 @@ export default function DisplayUsers() {
                     lg={3}
                     border={"solid"}
                     borderColor={"black"}
-                    borderRadius={"10px"}
                     padding="10px"
                     style={{ wordBreak: "break-word" }}
                     bgcolor={gridColor}
@@ -64,7 +61,6 @@ export default function DisplayUsers() {
                     lg={3}
                     border="solid"
                     borderColor={"black"}
-                    borderRadius={"10px"}
                     padding="10px"
                     style={{ wordBreak: "break-word" }}
                     bgcolor={gridColor}
@@ -87,12 +83,16 @@ export default function DisplayUsers() {
   return (
     <Grid
       container
-      marginTop="10%"
+      marginTop="3%"
       maxWidth={"100%"}
       padding="5%"
       border="solid"
       borderRadius={"5px"}
     >
+      <Grid item xs={12} lg={12} textAlign="center" marginBottom="20px">
+        <h1>User Display Panel</h1>
+      </Grid>
+
       <Grid item xs={12} lg={3} textAlign="center">
         <h4>Name</h4>
       </Grid>
@@ -104,7 +104,7 @@ export default function DisplayUsers() {
         <h4>University</h4>
       </Grid>
       <Grid item xs={12} lg={3} textAlign="center">
-        <h4>Completion of Taken Courses</h4>
+        <h4>Completion of Taken Courses(%)</h4>
       </Grid>
       <Grid container maxWidth="100%">
         {createUserInfoRow()}

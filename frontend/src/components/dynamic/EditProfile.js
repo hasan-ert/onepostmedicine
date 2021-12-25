@@ -116,8 +116,9 @@ export default function EditProfile() {
     temp.university = formData.get("university");
     if (imgUrl.length > 0) temp.img_url = imgUrl[0];
 
-    updateUserData(temp);
-    history.push("/home");
+    updateUserData(temp).then((res) => {
+      history.push("/");
+    });
   };
 
   return (

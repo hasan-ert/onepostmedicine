@@ -61,6 +61,39 @@ export default function AdminPanel() {
             </div>
           </Link>
         </Grid>
+
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          xl={4}
+          padding="10px"
+          textAlign="center"
+        >
+          <Link to="/displayUsers">
+            <div className="admin-card">
+              <ArticleIcon fontSize="large"></ArticleIcon>
+              <h2>Users</h2>
+            </div>
+          </Link>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          xl={4}
+          padding="10px"
+          textAlign="center"
+        >
+          <Link to="/deleteLecture">
+            <div className="admin-card">
+              <EditIcon fontSize="large"></EditIcon>
+              <h2>Delete Lecture</h2>
+            </div>
+          </Link>
+        </Grid>
       </Grid>
     </Container>
   );
