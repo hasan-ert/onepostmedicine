@@ -13,18 +13,14 @@ export default function SocialFollow() {
   return (
     <div class="social-container">
       <h3>Social Follow</h3>
-      <a href="https://www.youtube.com/c/jamesqquick"
+      <a href="https://www.youtube.com/c/1PostMedicine"
         className="youtube social">
         <FontAwesomeIcon icon={faYoutube} size="2x" />
     </a>
-    <a href="https://www.facebook.com/learnbuildteach/"
-        className="facebook social">
-        <FontAwesomeIcon icon={faFacebook} size="2x" />
-    </a>
-    <a href="https://www.twitter.com/jamesqquick" className="twitter social">
+    <a href="https://twitter.com/1postmedicine" className="twitter social">
         <FontAwesomeIcon icon={faTwitter} size="2x" />
     </a>
-    <a href="https://www.instagram.com/learnbuildteach"
+    <a href="https://www.instagram.com/1postmedicine/?hl=en"
         className="instagram social">
         <FontAwesomeIcon icon={faInstagram} size="2x" />
     </a>

@@ -84,7 +84,8 @@ export default function Courses({ authHandler }) {
     <Grid container marginTop="3rem" padding="3rem">
       <Grid item xs={12}>
         <Typography
-          fontSize="5vw"
+          fontSize="3vw"
+          fontFamily={"auto"}
           style={{ wordBreak: "break-word" }}
           textAlign="center"
           marginBottom="3%"

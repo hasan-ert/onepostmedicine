@@ -26,7 +26,7 @@ function PermanentDrawerLeft() {
     >
       <Box sx={{ overflow: "auto" }}>
         <List sx={{ marginRight: "2rem" }}>
-          {["Home", "Courses", "Quizzes", "User"].map((text, index) => (
+          {["Home", "Courses", "Quizzes",].map((text, index) => (
             <ListItem
               button
               key={text}

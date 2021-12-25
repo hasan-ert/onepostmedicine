@@ -26,7 +26,6 @@ import {
 import { auth } from "./constants/firebase-config";
 import AddLectures from "./components/Admin/AddLecture.js";
 import Deneme from "./components/Test.js";
-import Footer from "./components/Sub-Components/footer";
 import SocialFollow from "./components/Sub-Components/SocialFollow"
 import AdminPanel from "./components/Admin/AdminPanel.js";
 import DeleteLectures from "./components/Admin/DeleteLecture.js";

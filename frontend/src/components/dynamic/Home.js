@@ -165,7 +165,10 @@ function HomePanel() {
 
 function Home() {
   return (
-    <Container maxWidth="100%">
+    <Container 
+    maxWidth="100%"
+    
+    >
       <Grid container spacing={2} marginTop="10px">
         <Grid item lg={2} xs={12} alignItems="center">
           <PermanentDrawerLeft></PermanentDrawerLeft>

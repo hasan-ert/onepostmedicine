@@ -9,8 +9,10 @@
 }
 
 #org-prof-btn {
-  background-color: white;
+  background-color: #EBDC49;
   color: rgb(73, 23, 119);
+  border: solid;
+  border-radius: 2rem;
 }
 
 .user-data-row {
@@ -22,6 +24,8 @@
     text-align: center;
   }
 }
+
+
 
 
 

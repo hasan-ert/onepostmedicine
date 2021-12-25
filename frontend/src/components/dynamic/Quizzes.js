@@ -61,7 +61,7 @@ export default function Quizzes({ authHandler }) {
               cssClass="floating-card"
               contentHeader={item.data().parent_course}
               contentHeaderVar="20pt"
-              backColor={item.backColor ? item.backColor : "rgb(50, 100, 139)"}
+              backColor={item.backColor ? item.backColor : "rgb(155, 92, 235)"}
             ></MediaCard>
           </Grid>
         );
@@ -73,7 +73,8 @@ export default function Quizzes({ authHandler }) {
     <Grid container marginTop="3rem" padding="3rem">
       <Grid item xs={12}>
         <Typography
-          fontSize="5vw"
+          fontSize="3vw"
+          fontFamily={"auto"}
           style={{ wordBreak: "break-word" }}
           textAlign="center"
           marginBottom="3%"
