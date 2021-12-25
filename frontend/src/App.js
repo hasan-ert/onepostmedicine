@@ -27,6 +27,7 @@ import { auth } from "./constants/firebase-config";
 import AddLectures from "./components/Admin/AddLecture.js";
 import Deneme from "./components/Test.js";
 import Footer from "./components/Sub-Components/footer";
+import SocialFollow from "./components/Sub-Components/SocialFollow"
 import AdminPanel from "./components/Admin/AdminPanel.js";
 import DeleteLectures from "./components/Admin/DeleteLecture.js";
 import EditProfile from "./components/dynamic/EditProfile.js";
@@ -136,7 +137,7 @@ function App() {
       <Navbar user={user} />
       <Container maxWidth="100%" marginTop="20px">
         {Authorization()}
-        <Footer />
+        <SocialFollow />
       </Container>
     </div>
   );

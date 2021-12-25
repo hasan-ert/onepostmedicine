@@ -83,7 +83,10 @@ export default function Navbar({ user }) {
               onClick={() => {
                 history.push("/");
               }}
-              style={{ color: "white" }}
+              style={{ color: "white",
+                fontFamily: "fangsong",
+                fontSize: "16pt",
+            }}
             >
               One Post Medicine
             </Button>
